@@ -1,8 +1,18 @@
+enum RadioMessage {
+    message1 = 49434,
+    Player = 29701
+}
 namespace SpriteKind {
     export const player2 = SpriteKind.create()
     export const bullet1 = SpriteKind.create()
     export const bullet2 = SpriteKind.create()
 }
+controller.player2.onButtonEvent(ControllerButton.B, ControllerButtonEvent.Pressed, function () {
+    game.over(true, effects.melt)
+})
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    scene.cameraShake(10, 10000)
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     projectile1 = sprites.createProjectileFromSprite(img`
         c c c c c c c c 
@@ -16,7 +26,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         `, mySprite, horizontal1 * 300, vertial1 * -300)
     projectile1.setKind(SpriteKind.bullet1)
     projectile1.startEffect(effects.warmRadial)
-    scene.cameraShake(2, 100)
+    scene.cameraShake(2, 500)
     music.pewPew.play()
 })
 controller.player2.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Pressed, function () {
@@ -543,41 +553,41 @@ function start () {
         . . . . . . . 7 . . 
         `)
     scene.setTile(13, img`
-        e e e e e e e e e e e e e e e c 
-        e d e d d d d d d d d d d d c c 
-        e e d e e e e e e e e e e e d c 
-        e d e d e d d d d d d d d e d c 
-        e d e e d e d d d d d d d e d e 
-        e d e d e d e d d d d d d e d e 
-        e d e d d e d e d d d d d e d e 
-        e d e d d d e d e d d d d e d e 
-        e d e d d d d e d e d d d e d e 
-        e d e d d d d d e d e d d e d e 
-        e d e d d d d d d e d e d e d e 
-        e d e d d d d d d d e d e e d e 
-        e d e d d d d d d d d e d e d e 
-        e d e e e e e e e e e e e d e e 
-        e c d d d d d d d d d d d e d e 
-        e e e e e e e e e e e e e e e e 
+        f f f f f f f f f f f f f f f f 
+        f 2 2 2 2 2 2 2 7 2 2 2 2 2 2 f 
+        f 2 2 2 2 2 2 2 7 2 2 2 2 2 2 f 
+        f 2 2 2 2 2 2 2 7 2 2 2 2 2 2 f 
+        f 2 2 2 2 2 2 2 7 2 2 2 2 2 2 f 
+        f 2 2 2 2 2 2 2 7 2 2 2 2 2 2 f 
+        f 2 2 2 2 2 2 2 7 2 2 2 2 2 2 f 
+        f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+        f 2 2 2 2 2 2 2 7 2 2 2 2 2 2 f 
+        f 2 2 2 2 2 2 2 7 2 2 2 2 2 2 f 
+        f 2 2 2 2 2 2 2 7 2 2 2 2 2 2 f 
+        f 2 2 2 2 2 2 2 7 2 2 2 2 2 2 f 
+        f 2 2 2 2 2 2 2 7 2 2 2 2 2 2 f 
+        f 2 2 2 2 2 2 2 7 2 2 2 2 2 2 f 
+        f 2 2 2 2 2 2 2 7 2 2 2 2 2 2 f 
+        f f f f f f f f f f f f f f f f 
         `, true)
     scene.setTile(14, img`
-        . 1 e e e e e e e e e e c c c . 
-        1 c d d d d d d d d d d d b c c 
-        1 d e e e e e e e e e e e e b c 
-        e d e e e e e e e e e e e e b c 
-        e c d d d d d d d d d d d d c c 
-        e e e e e e e e e e e e e e e c 
-        e c d d d d d d d d d d d d c c 
-        e d e e e e e e e e e e e e b c 
-        e d e d d d d d d d d e e e b c 
-        e d e d d d d d d e e d d e b c 
-        e d e d d d d e e d d e e e b c 
-        e d e d d e e d d e e d d e b c 
-        e d e e e d d e e d d d d e b c 
-        e e e d d e e e e e e e e e d c 
-        e c d e e d d d d d d d d d c c 
-        e e e e e e e e e e e e e e e c 
-        `, true)
+        f f f f f f f f f f f f f f f f 
+        f 7 7 7 7 7 7 2 7 7 7 7 7 7 7 f 
+        f 7 7 7 7 7 7 2 7 7 7 7 7 7 7 f 
+        f 7 7 7 7 7 7 2 7 7 7 7 7 7 7 f 
+        f 7 7 7 7 7 7 2 7 7 7 7 7 7 7 f 
+        f 7 7 7 7 7 7 2 7 7 7 7 7 7 7 f 
+        f 7 7 7 7 7 7 2 7 7 7 7 7 7 7 f 
+        f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+        f 7 7 7 7 7 7 2 7 7 7 7 7 7 7 f 
+        f 7 7 7 7 7 7 2 7 7 7 7 7 7 7 f 
+        f 7 7 7 7 7 7 2 7 7 7 7 7 7 7 f 
+        f 7 7 7 7 7 7 2 7 7 7 7 7 7 7 f 
+        f 7 7 7 7 7 7 2 7 7 7 7 7 7 7 f 
+        f 7 7 7 7 7 7 2 7 7 7 7 7 7 7 f 
+        f 7 7 7 7 7 7 2 7 7 7 7 7 7 7 f 
+        f f f f f f f f f f f f f f f f 
+        `, false)
     scene.setTile(7, img`
         . . . . . . 6 6 6 6 . . . . . . 
         . . . . . c 6 7 7 6 c . . . . . 
@@ -690,6 +700,7 @@ let horizontal1 = 0
 let mySprite: Sprite = null
 let projectile1: Sprite = null
 start()
+radio.sendMessage(RadioMessage.Player)
 game.onUpdate(function () {
     if (mySprite.vx > 0) {
         vertial1 = 0
