@@ -53,6 +53,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.bullet2, function (sprite, other
         info.player2.changeLifeBy(1)
     }
 })
+radio.onReceivedMessage(RadioMessage.Player, function () {
+    music.playMelody("C D E F G A B C5 ", 960)
+})
 sprites.onOverlap(SpriteKind.player2, SpriteKind.bullet1, function (sprite, otherSprite) {
     info.player2.changeLifeBy(-1)
     otherSprite.destroy()
@@ -700,7 +703,6 @@ let horizontal1 = 0
 let mySprite: Sprite = null
 let projectile1: Sprite = null
 start()
-radio.sendMessage(RadioMessage.Player)
 game.onUpdate(function () {
     if (mySprite.vx > 0) {
         vertial1 = 0
